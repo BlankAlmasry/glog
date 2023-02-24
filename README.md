@@ -14,11 +14,17 @@ The following verbosity levels are supported:
 To set the verbosity level, use the `flag.Set` function:
 
 ```go
-flag.Set("v", "0") // Fatal, Error, Warning, Info
-flag.Set("v", "1") // Fatal, Error, Warning
-flag.Set("v", "2") // Fatal, Error
-flag.Set("v", "3") // Fatal
-flag.Set("v", "4") // Disable all logging
+flag.Set("v", "0") // Exit, Fatal, Error, Warning, Info
+flag.Set("v", "1") // Exit, Fatal, Error, Warning
+flag.Set("v", "2") // Exit, Fatal, Error
+flag.Set("v", "3") // Exit, Fatal
+flag.Set("v", "4") // Exit
+flag.Set("v", "5") // Disable all logging
+```
+## Installation
+
+```bash
+go get github.com/blankalmasry/glog
 ```
 
 ## Example Usage
@@ -27,15 +33,14 @@ flag.Set("v", "4") // Disable all logging
 package main
 
 import (
-    "github.com/golang/glog"
-    "github.com/example/glog"
+    "github.com/blankalmasry/glog"
 )
 
 func main() {
     // Required by Glog 
     flag.Parse()
     
-    // Set the verbosity level to 1 (Fatal, Error, Warning)
+    // Set the verbosity level to 1 (Exit, Fatal, Error, Warning) or running the program with the -v flag
     flag.Set("v", "1")
 
     // Log a message at the "Error" level
@@ -51,3 +56,6 @@ func main() {
     glog.Info("This is an info message")
 }
 ```
+
+## Contributing
+Feel free to submit a pull request or open an issue.
