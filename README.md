@@ -32,6 +32,9 @@ import (
 )
 
 func main() {
+    // Required by Glog 
+    flag.Parse()
+    
     // Set the verbosity level to 1 (Fatal, Error, Warning)
     flag.Set("v", "1")
 
