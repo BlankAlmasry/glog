@@ -1,10 +1,8 @@
-package awesomeProject2
+package glog
 
 import "github.com/golang/glog"
 
-type GlogAdapter struct{}
-
-func (a *GlogAdapter) Logf(level LogLevel, message string, args ...interface{}) {
+func Logf(level LogLevel, message string, args ...interface{}) {
 	switch level {
 	case LogLevelInfo:
 		if V(LogLevelInfo) {
@@ -29,57 +27,57 @@ func (a *GlogAdapter) Logf(level LogLevel, message string, args ...interface{}) 
 	}
 }
 
-func (a *GlogAdapter) Log(level LogLevel, args ...interface{}) {
+func Log(level LogLevel, args ...interface{}) {
 	switch level {
 	case LogLevelInfo:
 		if V(LogLevelInfo) {
-			glog.Info(args)
+			glog.Info(args...)
 		}
 	case LogLevelWarn:
 		if V(LogLevelWarn) {
-			glog.Warning(args)
+			glog.Warning(args...)
 		}
 	case LogLevelError:
 		if V(LogLevelError) {
-			glog.Error(args)
+			glog.Error(args...)
 		}
 	case LogLevelFatal:
 		if V(LogLevelFatal) {
-			glog.Fatal(args)
+			glog.Fatal(args...)
 		}
 	case LogLevelExit:
 		if V(LogLevelExit) {
-			glog.Exit(args)
+			glog.Exit(args...)
 		}
 	}
 }
 
-func (a *GlogAdapter) Logln(level LogLevel, args ...interface{}) {
+func Logln(level LogLevel, args ...interface{}) {
 	switch level {
 	case LogLevelInfo:
 		if V(LogLevelInfo) {
-			glog.Infoln(args)
+			glog.Infoln(args...)
 		}
 	case LogLevelWarn:
 		if V(LogLevelWarn) {
-			glog.Warningln(args)
+			glog.Warningln(args...)
 		}
 	case LogLevelError:
 		if V(LogLevelError) {
-			glog.Errorln(args)
+			glog.Errorln(args...)
 		}
 	case LogLevelFatal:
 		if V(LogLevelFatal) {
-			glog.Fatalln(args)
+			glog.Fatalln(args...)
 		}
 	case LogLevelExit:
 		if V(LogLevelExit) {
-			glog.Exitln(args)
+			glog.Exitln(args...)
 		}
 	}
 }
 
-func (a *GlogAdapter) Flush() {
+func Flush() {
 	glog.Flush()
 }
 
@@ -90,5 +88,3 @@ func (a *GlogAdapter) Flush() {
 func V(level LogLevel) glog.Verbose {
 	return !glog.V(glog.Level(level + 1))
 }
-
-var logger = &GlogAdapter{}
