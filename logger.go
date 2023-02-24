@@ -20,20 +20,48 @@ func Fatalf(message string, args ...interface{}) {
 	logger.Logf(LogLevelFatal, message, args...)
 }
 
-func Info(message string) {
-	logger.Log(LogLevelInfo, message)
+func Exitf(message string, args ...interface{}) {
+	logger.Logf(LogLevelExit, message, args...)
 }
 
-func Warning(message string) {
-	logger.Log(LogLevelWarn, message)
+func Info(args ...interface{}) {
+	logger.Log(LogLevelInfo, args)
 }
 
-func Error(message string) {
-	logger.Log(LogLevelError, message)
+func Warning(args ...interface{}) {
+	logger.Log(LogLevelWarn, args)
 }
 
-func Fatal(message string) {
-	logger.Log(LogLevelFatal, message)
+func Error(args ...interface{}) {
+	logger.Log(LogLevelError, args)
+}
+
+func Fatal(args ...interface{}) {
+	logger.Log(LogLevelFatal, args)
+}
+
+func Exit(args ...interface{}) {
+	logger.Log(LogLevelExit, args)
+}
+
+func Infoln(args ...interface{}) {
+	logger.Logln(LogLevelInfo, args...)
+}
+
+func Warningln(args ...interface{}) {
+	logger.Logln(LogLevelWarn, args...)
+}
+
+func Errorln(args ...interface{}) {
+	logger.Logln(LogLevelError, args...)
+}
+
+func Fatalln(args ...interface{}) {
+	logger.Logln(LogLevelFatal, args...)
+}
+
+func Exitln(args ...interface{}) {
+	logger.Logln(LogLevelExit, args...)
 }
 
 func Flush() {

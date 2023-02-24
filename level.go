@@ -7,4 +7,5 @@ const (
 	LogLevelWarn
 	LogLevelError
 	LogLevelFatal
+	LogLevelExit
 )

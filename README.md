@@ -4,11 +4,12 @@ This is a wrapper for glog that allows you to set verbosity levels.
 
 The following verbosity levels are supported:
 
-* `0` - `Fatal`, `Error`, `Warning`, `Info`
-* `1` - `Fatal`, `Error`, `Warning`
-* `2` - `Fatal`, `Error`
-* `3` - `Fatal`
-* `4` - Disable all logging
+* `0` - `Exit`, `Fatal`, `Error`, `Warning`, `Info`
+* `1` - `Exit`, `Fatal`, `Error`, `Warning`
+* `2` - `Exit`, `Fatal`, `Error`
+* `3` - `Exit`, `Fatal`
+* `4` - `Exit`
+* `5` - `Disable all logging`
 
 To set the verbosity level, use the `flag.Set` function:
 

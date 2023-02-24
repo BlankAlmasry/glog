@@ -22,26 +22,59 @@ func (a *GlogAdapter) Logf(level LogLevel, message string, args ...interface{}) 
 		if V(LogLevelFatal) {
 			glog.Fatalf(message, args...)
 		}
+	case LogLevelExit:
+		if V(LogLevelExit) {
+			glog.Exitf(message, args...)
+		}
 	}
 }
 
-func (a *GlogAdapter) Log(level LogLevel, message string) {
+func (a *GlogAdapter) Log(level LogLevel, args ...interface{}) {
 	switch level {
 	case LogLevelInfo:
 		if V(LogLevelInfo) {
-			glog.Info(message)
+			glog.Info(args)
 		}
 	case LogLevelWarn:
 		if V(LogLevelWarn) {
-			glog.Warning(message)
+			glog.Warning(args)
 		}
 	case LogLevelError:
 		if V(LogLevelError) {
-			glog.Error(message)
+			glog.Error(args)
 		}
 	case LogLevelFatal:
 		if V(LogLevelFatal) {
-			glog.Fatal(message)
+			glog.Fatal(args)
+		}
+	case LogLevelExit:
+		if V(LogLevelExit) {
+			glog.Exit(args)
+		}
+	}
+}
+
+func (a *GlogAdapter) Logln(level LogLevel, args ...interface{}) {
+	switch level {
+	case LogLevelInfo:
+		if V(LogLevelInfo) {
+			glog.Infoln(args)
+		}
+	case LogLevelWarn:
+		if V(LogLevelWarn) {
+			glog.Warningln(args)
+		}
+	case LogLevelError:
+		if V(LogLevelError) {
+			glog.Errorln(args)
+		}
+	case LogLevelFatal:
+		if V(LogLevelFatal) {
+			glog.Fatalln(args)
+		}
+	case LogLevelExit:
+		if V(LogLevelExit) {
+			glog.Exitln(args)
 		}
 	}
 }
