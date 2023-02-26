@@ -11,7 +11,10 @@ import (
 
 func captureStderr(f func()) (string, error) {
 	flag.Parse()
-	flag.Set("logtostderr", "true")
+	err := flag.Set("logtostderr", "true")
+	if err != nil {
+		return "", err
+	}
 	old := os.Stderr // keep backup of the real stderr
 	r, w, err := os.Pipe()
 	if err != nil {
@@ -23,7 +26,10 @@ func captureStderr(f func()) (string, error) {
 	// copy the output in a separate goroutine so printing can't block indefinitely
 	go func() {
 		var buf bytes.Buffer
-		io.Copy(&buf, r)
+		_, err := io.Copy(&buf, r)
+		if err != nil {
+			return
+		}
 		outC <- buf.String()
 	}()
 
